@@ -18,8 +18,6 @@ which offers a selection of scientific computing software through a
 [RESTful
 API](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
-![Interacting with the solution of a PDE](http://harishnarayanan.org/files/images/tmp/thinkbot-xblock-1.png)
-
 In particular, the project initially aims to build three kinds of
 XBlock components:
 
@@ -33,6 +31,7 @@ XBlock components:
 3. A component that presents students with interactive programming
    exercises tied to computational science.
 
+![Interacting with the solution of a PDE](http://harishnarayanan.org/files/images/tmp/thinkbot-xblock-1.png)
 
 Installation
 ------------
