@@ -18,6 +18,8 @@ which offers a selection of scientific computing software through a
 [RESTful
 API](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
+![Interacting with the solution of a PDE](http://harishnarayanan.org/files/images/tmp/thinkbot-xblock-1.png)
+
 In particular, the project initially aims to build three kinds of
 XBlock components:
 
@@ -38,7 +40,7 @@ Installation
 1. Install the [XBlock component
    architecture](https://github.com/edX/XBlock) project
 
-2. Source the corresponding venv, if you installed it in a virtual
+2. Source the corresponding `venv`, if you installed it in a virtual
    environment (which you should have!)
 
 3. Install the thinkbot related Xblocks from this project's root
@@ -50,7 +52,7 @@ Installation
 
        $ python manage.py runserver
 
-5. Open a web browser to: http://127.0.0.1:8000 and find the link to
+5. Open a web browser to: http://127.0.0.1:8000 and find a link to
    the thinkbot XBlock
 
 
