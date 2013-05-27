@@ -89,7 +89,7 @@ class ThinkbotSimulation(XBlock):
             r.render();
           }
 
-          result = $.getValues("http://api.thinkbot.net/jobs/12/");
+          result = $.getValues("http://api.thinkbot.net/jobs/4/");
 	  renderValues(result, "#jobinfo", "visualization");
 
 };
