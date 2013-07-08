@@ -51,6 +51,6 @@ window.onload = function() {
     }
 
     result = $.getValues("http://localhost:8001/jobs/%(id)i/");
-    renderValues(result, "#jobinfo", "visualization-%(id)i");
+    renderValues(result, "#jobinfo-%(id)i", "visualization-%(id)i");
 
 };
