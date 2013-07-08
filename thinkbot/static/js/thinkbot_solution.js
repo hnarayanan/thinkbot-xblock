@@ -50,7 +50,7 @@ window.onload = function() {
         r.render();
     }
 
-    result = $.getValues("http://localhost:8001/jobs/%(jobid)i/");
-    renderValues(result, "#jobinfo", "visualization-%(jobid)i");
+    result = $.getValues("http://localhost:8001/jobs/%(id)i/");
+    renderValues(result, "#jobinfo", "visualization-%(id)i");
 
 };
