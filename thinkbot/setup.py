@@ -8,7 +8,7 @@ setup(
     install_requires=['XBlock'],
     entry_points={
         'xblock.v1': [
-            'thinkbot = thinkbot:ThinkbotSolutionBlock',
+            'thinkbot_solution = thinkbot:ThinkbotSolutionBlock',
         ]
     }
 )
