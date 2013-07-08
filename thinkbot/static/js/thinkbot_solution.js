@@ -50,7 +50,7 @@ window.onload = function() {
         r.render();
     }
 
-    result = $.getValues("http://localhost:8001/jobs/%(id)i/");
+    result = $.getValues("http://api.thinkbot.net/jobs/%(id)i/");
     renderValues(result, "#jobinfo-%(id)i", "visualization-%(id)i");
 
 };
