@@ -56,17 +56,18 @@ class ThinkbotSolutionBlock(XBlock):
             ("thinkbot solution",
              """\
              <vertical>
-             <p>The results on this page are precomputed by <a
-             href="http://thinkbot.net/">thinkbot</a>. Such demonstrations
-             are used to motivate theoretical material covered in
-             classes pertaining to applied mathematics and physical
-             sciences.</p>
-             <p>Go on, play with the solution field below!</p>
+             <p>What follows is a solution of a nonlinear partial
+             differential equation precomputed by <a
+             href="http://thinkbot.net/">thinkbot</a>. Go on, play
+             with the twisted hyperelastic block below!</p>
              <thinkbot_solution id="3" width="600" height="400" />
-             <p>And head on over to <a
-             href="http://mechanicsacademy.com/">Mechanics Academy</a> for
-             more concrete examples of how they might be used in
-             practice.</p>
+             <p>Such visualizations are used to motivate
+             theoretical material covered in classes pertaining to
+             applied mathematics and physical sciences. Soon,
+             I&#8217;ll release the corresponding XBlock that <a
+             href="http://mechanicsacademy.com/demo/thinkbot-api/">allows
+             students to program numerical methods</a> for solving
+             such equations themselves.</p>
              </vertical>
              """)
         ]
