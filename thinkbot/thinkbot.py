@@ -1,7 +1,7 @@
 """
 The following XBlocks connect to the thinkbot compute service,
 allowing students to carry out simulations in mathematical physics and
-instructors to pose exercises within this context
+instructors to pose exercises within this context.
 """
 
 from xblock.core import XBlock, Scope, Integer
@@ -20,7 +20,7 @@ class ThinkbotSolutionBlock(XBlock):
     motivate the theoretical material covered in the classes.
     """
 
-    jobid = Integer(help="ID of the simulation you'd like to display",
+    id = Integer(help="ID of the simulation you'd like to display",
                     default=3, scope=Scope.content)
     width = Integer(help="Width of the visualization window",
                     default=500, scope=Scope.content)
@@ -28,37 +28,48 @@ class ThinkbotSolutionBlock(XBlock):
                      default=500, scope=Scope.content)
 
     def student_view(self, context):
-
         """
         Load HTML, CSS and JS from static templates and construct
         fragments to be returned.
         """
 
         html = pkg_resources.resource_string(__name__, "static/html/thinkbot_solution.html")
-        fragments = Fragment(unicode(html) % {'jobid': self.jobid})
+        fragments = Fragment(unicode(html) % {'id': self.id})
 
         css = pkg_resources.resource_string(__name__, "static/css/thinkbot_solution.css")
-        fragments.add_css(unicode(css) % {'jobid': self.jobid})
+        fragments.add_css(unicode(css) % {'id': self.id, 'width': self.width, 'height': self.height})
 
         js = pkg_resources.resource_string(__name__, "static/js/thinkbot_solution.js")
         fragments.add_javascript_url("http://get.goXTK.com/xtk.js")
-        fragments.add_javascript(unicode(js) % {'jobid': self.jobid})
+        fragments.add_javascript(unicode(js) % {'id': self.id})
 
         return fragments
 
-        @staticmethod
-        def workbench_scenarios():
-            """A canned scenario for display in the workbench."""
-            return [
-                ("thinkbot solution",
-                 """\
-                 <vertical>
-                 <thinkbot_solution jobid="4" width="600" height="400" />
-                 <div>Rate the video:</div>
-                 <thumbs />
-                 </vertical>
-                 """)
-            ]
+    problem_view = student_view
+
+    @staticmethod
+    def workbench_scenarios():
+        """
+        A canned scenario for display in the workbench.
+        """
+        return [
+            ("thinkbot solution",
+             """\
+             <vertical>
+             <p>The results on this page are precomputed by <a
+             href="http://thinkbot.net/">thinkbot</a>. Such demonstrations
+             are used to motivate theoretical material covered in
+             classes pertaining to applied mathematics and physical
+             sciences.</p>
+             <p>Go on, play with the solution field below!</p>
+             <thinkbot_solution id="3" width="600" height="400" />
+             <p>And head on over to <a
+             href="http://mechanicsacademy.com/">Mechanics Academy</a> for
+             more concrete examples of how they might be used in
+             practice.</p>
+             </vertical>
+             """)
+        ]
 
 
 class ThinkbotExercise(InputBlock):
