@@ -34,14 +34,20 @@ class ThinkbotSolutionBlock(XBlock):
         """
 
         html = pkg_resources.resource_string(__name__, "static/html/thinkbot_solution.html")
-        fragments = Fragment(unicode(html) % {'id': self.id})
+        fragments = Fragment(unicode(html) % {'id': int(self.id)})
 
         css = pkg_resources.resource_string(__name__, "static/css/thinkbot_solution.css")
-        fragments.add_css(unicode(css) % {'id': self.id, 'width': self.width, 'height': self.height})
+        fragments.add_css(unicode(css) % {'id': int(self.id), 'width': int(self.width), 'height': int(self.height)})
 
         js = pkg_resources.resource_string(__name__, "static/js/thinkbot_solution.js")
         fragments.add_javascript_url("http://get.goXTK.com/xtk.js")
-        fragments.add_javascript(unicode(js) % {'id': self.id})
+        fragments.add_javascript(unicode(js))
+        fragments.add_javascript(unicode("""
+        $(window).load(function() {
+            result = $.getValues("http://api.thinkbot.net/jobs/%(id)i/");
+            $.renderValues(result, "#jobinfo-%(id)i", "visualization-%(id)i");
+        });
+        """ % {'id': int(self.id)}))
 
         return fragments
 
@@ -68,15 +74,19 @@ class ThinkbotSolutionBlock(XBlock):
              href="http://mechanicsacademy.com/demo/thinkbot-api/">allows
              students to program numerical methods</a> for solving
              such equations themselves.</p>
+             <p>Finally, as a test of multiple uses of the XBlock on a
+             page, I leave you with a stretched block in a smaller
+             render window.</p>
+             <thinkbot_solution id="4" width="300" height="200" />
              </vertical>
              """)
         ]
 
 
-class ThinkbotExercise(InputBlock):
+class ThinkbotExerciseBlock(XBlock):
     """
-    An XBlock that presents students with interactive and programming
-    exercises tied to numerical simulation.
+    An XBlock that presents an interface wherein students can program
+    numerical methods to solve mathematical problems.
     """
 
     def student_view(self, context):
